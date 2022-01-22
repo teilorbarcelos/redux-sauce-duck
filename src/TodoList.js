@@ -1,22 +1,22 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import * as TodoActions from "./store/actions/todos";
+import { connect } from "react-redux"
+import { bindActionCreators } from "redux"
+import { Creators as TodoActions } from "./store/ducks/todos"
 
-import "./styles.css";
+import "./styles.css"
 
 class TodoList extends Component {
   handleSubmit = e => {
-    e.preventDefault();
+    e.preventDefault()
 
-    this.props.addTodo(this.input.value);
+    this.props.addTodo(this.input.value)
 
-    this.input.value = "";
-  };
+    this.input.value = ""
+  }
 
   render() {
-    const { todos, toggleTodo, removeTodo } = this.props;
+    const { todos, toggleTodo, removeTodo } = this.props
 
     return (
       <section>
@@ -37,18 +37,18 @@ class TodoList extends Component {
           ))}
         </ul>
       </section>
-    );
+    )
   }
 }
 
 const mapStateToProps = state => ({
   todos: state.todos
-});
+})
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(TodoActions, dispatch);
+  bindActionCreators(TodoActions, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TodoList);
+)(TodoList)
